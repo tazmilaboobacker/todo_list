@@ -109,7 +109,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const App = () => {
-  const API_URL = "https://movie-crud-rho.vercel.app/api/posts";
+  const API_URL = "your api";
 
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState("");
@@ -130,7 +130,7 @@ const App = () => {
 
     try {
       const response = await axios.post(API_URL, {
-        Course: newPost,
+        course: newPost,
         description: newDescription,
       });
       setPosts([...posts, response.data]);
@@ -144,7 +144,7 @@ const App = () => {
   const updatePost = async (id) => {
     try {
       const response = await axios.put(`${API_URL}/${id}`, {
-        Course: newPost,
+        course: newPost,
         description: newDescription,
       });
       setPosts(posts.map((post) => (post._id === id ? response.data : post)));
@@ -206,7 +206,7 @@ const App = () => {
             <li key={post._id} className="card bg-base-100 shadow-md p-4">
               <div className="flex justify-between items-center">
                 <div>
-                  <h2 className="font-semibold">{post.Course}</h2>
+                  <h2 className="font-semibold">{post.course}</h2>
                   <p className="text-gray-600">{post.description}</p>
                 </div>
                 <div className="flex gap-2">
@@ -214,7 +214,7 @@ const App = () => {
                     className="btn btn-outline btn-warning btn-sm"
                     onClick={() => {
                       setEditPostId(post._id);
-                      setNewPost(post.Course);
+                      setNewPost(post.course);
                       setNewDescription(post.description);
                     }}
                   >
